@@ -16,20 +16,17 @@ let highScore = localStorage.getItem("high-score") || 0;
 highScoreElement.innerText = `High Score: ${highScore}`;
 
 const updateFoodPosition = () => {
-    // Passing a random 1 - 30 value as food position
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
 }
 
 const handleGameOver = () => {
-    // Clearing the timer and reloading the page on game over
     clearInterval(setIntervalId);
     alert("Game Over! Press OK to replay...");
     location.reload();
 }
 
 const changeDirection = e => {
-    // Changing velocity value based on key press
     if(e.key === "ArrowUp" && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
@@ -45,7 +42,6 @@ const changeDirection = e => {
     }
 }
 
-// Calling changeDirection on each key click and passing key dataset value as an object
 controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 
 const initGame = () => {
@@ -55,8 +51,8 @@ const initGame = () => {
     // Checking if the snake hit the food
     if(snakeX === foodX && snakeY === foodY) {
         updateFoodPosition();
-        snakeBody.push([foodY, foodX]); // Pushing food position to snake body array
-        score++; // increment score by 1
+        snakeBody.push([foodY, foodX]);
+        score++;
         highScore = score >= highScore ? score : highScore;
         localStorage.setItem("high-score", highScore);
         scoreElement.innerText = `Score: ${score}`;
