@@ -1,3 +1,32 @@
+// handlling game start with tutorial
+const tutorial = document.querySelector('.tutorial');
+const startGame = document.querySelector('.start-game');
+
+startGame.addEventListener('click', () => {
+    tutorial.classList.add('hidden');
+});
+
+
+// handling game over
+const overlay = document.querySelector('.overlay');
+const restartGame = document.querySelector('.restart-game');
+const finalScore = document.querySelector('.final-score');
+const finalHighScore = document.querySelector('.final-high-score');
+
+restartGame.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    location.reload();
+});
+
+const handleGameOver = () => {
+    clearInterval(setIntervalId);
+    finalScore.textContent = `${score}`;
+    finalHighScore.textContent = `${highScore}`;
+    overlay.classList.remove('hidden');
+}
+
+
+// handling game part
 const playBoard = document.querySelector(".play-board");
 const scoreElement = document.querySelector(".score");
 const highScoreElement = document.querySelector(".high-score");
@@ -18,12 +47,6 @@ highScoreElement.innerText = `High Score: ${highScore}`;
 const updateFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
-}
-
-const handleGameOver = () => {
-    clearInterval(setIntervalId);
-    alert("Game Over! Press OK to replay...");
-    location.reload();
 }
 
 const changeDirection = e => {

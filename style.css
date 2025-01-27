@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
+
 body {
   display: flex;
   align-items: center;
@@ -12,6 +13,104 @@ body {
   min-height: 100vh;
   background: #E3F2FD;
 }
+
+button{
+  font-size: 1.1em;
+  padding: 10px 20px;
+  background: #17a6f9;
+  color: #E3F2FD;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+p{
+  color: white;
+  margin-bottom: 10px;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-over{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: #444444;
+  height: 300px;
+  width: 300px;
+  border-radius: 20px;
+  
+  h2{
+    color: #17a6f9;
+    font-size: 2em;
+  }
+
+  .restart-game{
+    margin-top: -10px;
+  }
+}
+
+.scores{
+  text-align: center;
+  p{
+    font-size: 1.1em;
+  }
+}
+
+.tutorial{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #444444;
+  height: 350px;
+  width: 500px;
+  border-radius: 20px;
+  h1{
+    color: #17a6f9;
+  }
+}
+
+.rules{
+  margin-top: -20px;
+  width: 75%;
+  text-align: center;
+  strong{
+    color: #17a6f9;
+    margin-right: 2px;
+  }
+}
+
+.start-game{
+  margin-top: -30px;
+}
+
 .wrapper {
   width: 65vmin;
   height: 70vmin;
@@ -19,10 +118,11 @@ body {
   overflow: hidden;
   flex-direction: column;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 10px;
   background: #293447;
   box-shadow: 0 20px 40px rgba(52, 87, 220, 0.2);
 }
+
 .game-details {
   color: #B8C6DC;
   font-weight: 500;
@@ -31,6 +131,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
 .play-board {
   height: 100%;
   width: 100%;
@@ -38,17 +139,28 @@ body {
   background: #212837;
   grid-template: repeat(30, 1fr) / repeat(30, 1fr);
 }
+
 .play-board .food {
   background: #FF003D;
 }
+
 .play-board .head {
   background: #17a6f9;
+}
+
+.smile{
+  color: #B8C6DC;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 .controls {
   display: none;
   justify-content: space-between;
 }
+
 .controls i {
   padding: 25px 0;
   text-align: center;
@@ -57,6 +169,10 @@ body {
   width: calc(100% / 4);
   cursor: pointer;
   border-right: 1px solid #171B26;
+}
+
+.hidden{
+  display: none;
 }
 
 @media screen and (max-width: 800px) {

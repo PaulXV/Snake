@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="it" dir="ltr">
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +8,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
   </head>
   <body>
+
+    <div class="overlay hidden">
+      <div class="game-over">
+        <h2>Game Over</h2>
+        <div class="scores">
+          <p>Your Score: <strong><span class="final-score"></span></strong></p>
+          <p>Your High-Score: <strong><span class="final-high-score"></span></strong></p>
+        </div>
+        <button class="restart-game">Restart</button>
+      </div>
+    </div>
+
     <div class="wrapper">
+
+      <div class="tutorial">
+        <div class="tutorial-content">
+          <h1>Snake Game</h1>
+          <div class="rules">
+            <p><strong>1.</strong> Use the arrow keys to move the snake</p>
+            <p><strong>2.</strong> Collect the  apples to increase your score</p>
+            <p><strong>3.</strong> Touching the borders or the snake body will end the game</p>
+            <p><strong>4.</strong> Press any of the arrow keys to start the game</p>
+          </div>
+          <button class="start-game">Let's play!</button>
+        </div>
+      </div>
+
       <div class="game-details">
         <span class="score">Score: 0</span>
         <span class="high-score">High Score: 0</span>
       </div>
+      
       <div class="play-board"></div>
+      <p class="smile">It's not laggy, It's a feature</p>
+      
       <div class="controls">
         <i data-key="ArrowLeft" class="fa-solid fa-arrow-left-long"></i>
         <i data-key="ArrowUp" class="fa-solid fa-arrow-up-long"></i>
         <i data-key="ArrowRight" class="fa-solid fa-arrow-right-long"></i>
         <i data-key="ArrowDown" class="fa-solid fa-arrow-down-long"></i>
       </div>
+
     </div>
+
     <script src="snake.js" defer></script>
+    <script src="actions.js"></script>
   </body>
 </html>
