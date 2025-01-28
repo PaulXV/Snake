@@ -27,7 +27,7 @@ button{
 
 p{
   color: white;
-  margin-bottom: 10px;
+  margin: 0px;
 }
 
 .overlay{
@@ -48,18 +48,15 @@ p{
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
   background-color: #444444;
-  height: 300px;
   width: 300px;
   border-radius: 20px;
   
   h2{
     color: #17a6f9;
     font-size: 2em;
-  }
-
-  .restart-game{
-    margin-top: -10px;
   }
 }
 
@@ -89,26 +86,28 @@ p{
   justify-content: space-around;
   flex-direction: column;
   background-color: #444444;
-  height: 350px;
+  padding: 2rem;
+  gap: 2rem;
   width: 500px;
   border-radius: 20px;
+
   h1{
     color: #17a6f9;
   }
 }
 
 .rules{
-  margin-top: -20px;
   width: 75%;
   text-align: center;
+
+  p{
+    margin-bottom: 10px;
+  }
+
   strong{
     color: #17a6f9;
     margin-right: 2px;
   }
-}
-
-.start-game{
-  margin-top: -30px;
 }
 
 .wrapper {
