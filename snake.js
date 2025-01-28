@@ -34,6 +34,7 @@ restartGame.addEventListener('click', () => {
 });
 
 const handleGameOver = () => {
+    localStorage.setItem("high-score", highScore);
     clearInterval(setIntervalId);
     finalScore.textContent = `${score}`;
     finalHighScore.textContent = `${highScore}`;
@@ -60,8 +61,25 @@ let highScore = localStorage.getItem("high-score") || 0;
 highScoreElement.innerText = `High Score: ${highScore}`;
 
 const updateFoodPosition = () => {
-    foodX = Math.floor(Math.random() * 30) + 1;
-    foodY = Math.floor(Math.random() * 30) + 1;
+    let foodPositionValid = false;
+
+    // Continuare a generare la posizione finché non è valida
+   do{
+        foodX = Math.floor(Math.random() * 30) + 1;
+        foodY = Math.floor(Math.random() * 30) + 1;
+
+        // Verifica se la posizione generata è occupata dal corpo del serpente
+        foodPositionValid = true;
+
+        // Verifica se la posizione generata è occupata da una parte del corpo del serpente
+        for (let i = 0; i < snakeBody.length; i++) {
+            // snakeBody[i] contiene [Y, X], quindi confrontiamo con Y e X di food
+            if (snakeBody[i][0] === foodX && snakeBody[i][1] === foodY) {
+                foodPositionValid = false; // Se c'è una sovrapposizione, non è valida
+                break;
+            }
+        }   
+    } while (!foodPositionValid);
 }
 
 controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
@@ -91,7 +109,6 @@ const initGame = () => {
         snakeBody.push([foodY, foodX]);
         score++;
         highScore = score >= highScore ? score : highScore;
-        localStorage.setItem("high-score", highScore);
         scoreElement.innerText = `Score: ${score}`;
         highScoreElement.innerText = `High Score: ${highScore}`;
     }
@@ -111,10 +128,9 @@ const initGame = () => {
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
-        // Adding a div for each part of the snake's body
         html += `<div class="head" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
         // Checking if the snake head hit the body, if so set gameOver to true
-        if (i !== 0 && snakeBody[0][1] === snakeBody[i][1] && snakeBody[0][0] === snakeBody[i][0]) {
+        if (i !== 0 && snakeBody[0][1] == snakeBody[i][1] && snakeBody[0][0] === snakeBody[i][0]) {
             gameOver = true;
         }
     }
