@@ -64,23 +64,22 @@ const updateFoodPosition = () => {
     foodY = Math.floor(Math.random() * 30) + 1;
 }
 
+controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 const changeDirection = e => {
-    if(e.key === "ArrowUp" && velocityY != 1) {
+    if((e.key === "ArrowUp" || e.keyCode == 87) && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
-    } else if(e.key === "ArrowDown" && velocityY != -1) {
+    } else if((e.key === "ArrowDown" || e.keyCode == 83) && velocityY != -1) {
         velocityX = 0;
         velocityY = 1;
-    } else if(e.key === "ArrowLeft" && velocityX != 1) {
+    } else if((e.key === "ArrowLeft" || e.keyCode == 65) && velocityX != 1) {
         velocityX = -1;
         velocityY = 0;
-    } else if(e.key === "ArrowRight" && velocityX != -1) {
+    } else if((e.key === "ArrowRight" || e.keyCode == 68) && velocityX != -1) {
         velocityX = 1;
         velocityY = 0;
     }
 }
-
-controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 
 const initGame = () => {
     if(gameOver) return handleGameOver();
