@@ -130,6 +130,15 @@ p{
   padding: 20px 27px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.tut-content{
+  cursor: pointer;
+  background-color: #B8C6DC;
+  color: #212837;
+  padding: 8px 16px;
+  border-radius: 10px;
 }
 
 .play-board {

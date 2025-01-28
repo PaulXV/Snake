@@ -1,9 +1,14 @@
 // handlling game start with tutorial
 const tutorial = document.querySelector('.tutorial');
 const startGame = document.querySelector('.start-game');
+const tutorialControls = document.querySelector('.tut-content');
 
 startGame.addEventListener('click', () => {
     tutorial.classList.add('hidden');
+});
+
+tutorialControls.addEventListener('click', () => {
+    tutorial.classList.remove('hidden');
 });
 
 
@@ -15,7 +20,17 @@ const finalHighScore = document.querySelector('.final-high-score');
 
 restartGame.addEventListener('click', () => {
     overlay.classList.add('hidden');
-    location.reload();
+    gameOver = false;
+    snakeX = 5;
+    snakeY = 5;
+    velocityX = 0;
+    velocityY = 0;
+    snakeBody = [];
+    updateFoodPosition();
+    score = 0;
+    scoreElement.innerText = `Score: ${score}`;
+    highScoreElement.innerText = `High Score: ${highScore}`;
+    setIntervalId = setInterval(initGame, 100);
 });
 
 const handleGameOver = () => {
