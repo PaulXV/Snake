@@ -6,6 +6,9 @@
     <title>Snake Game</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
 
@@ -29,7 +32,8 @@
             <p><strong>1.</strong> Use 'wasd' or the arrow keys to move the snake</p>
             <p><strong>2.</strong> Collect the  apples to increase your score</p>
             <p><strong>3.</strong> Touching the borders or the snake body will end the game</p>
-            <p><strong>4.</strong> Press any of the movement keys to start the game</p>
+            <p><strong>4.</strong> Press space or the pause button for pause the game</p>
+            <p><strong>5.</strong> Press any of the movement keys to init the game</p>
           </div>
           <button class="start-game">Let's play!</button>
         </div>
@@ -37,7 +41,10 @@
 
       <div class="game-details">
         <span class="score">Score: 0</span>
-        <span class="tut-content">Tutorial</span>
+        <div class="game-details-part">
+          <span class="tut-content">Tutorial</span>
+          <span class="play-pause"><i class="fa-solid fa-pause"></i></span>
+        </div>
         <span class="high-score">High Score: 0</span>
       </div>
       

@@ -141,6 +141,15 @@ p{
   font-weight: 700;
 }
 
+.fa-solid{
+  cursor: pointer;
+  background-color: #B8C6DC;
+  color: #212837;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
 .play-board {
   height: 100%;
   width: 100%;

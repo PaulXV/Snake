@@ -4,11 +4,12 @@ const startGame = document.querySelector('.start-game');
 const tutorialControls = document.querySelector('.tut-content');
 
 startGame.addEventListener('click', () => {
-    tutorial.classList.add('hidden');
+    tutorial.classList.toggle('hidden');
 });
 
 tutorialControls.addEventListener('click', () => {
-    tutorial.classList.remove('hidden');
+    tutorial.classList.toggle('hidden');
+    pauseGame();
 });
 
 
@@ -63,7 +64,6 @@ highScoreElement.innerText = `High Score: ${highScore}`;
 const updateFoodPosition = () => {
     let foodPositionValid = false;
 
-    // Continuare a generare la posizione finché non è valida
    do{
         foodX = Math.floor(Math.random() * 30) + 1;
         foodY = Math.floor(Math.random() * 30) + 1;
@@ -73,7 +73,6 @@ const updateFoodPosition = () => {
 
         // Verifica se la posizione generata è occupata da una parte del corpo del serpente
         for (let i = 0; i < snakeBody.length; i++) {
-            // snakeBody[i] contiene [Y, X], quindi confrontiamo con Y e X di food
             if (snakeBody[i][0] === foodX && snakeBody[i][1] === foodY) {
                 foodPositionValid = false; // Se c'è una sovrapposizione, non è valida
                 break;
@@ -137,6 +136,32 @@ const initGame = () => {
     playBoard.innerHTML = html;
 }
 
+// handling pause game functionality
+let isPaused = false;
+
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+        pauseGame();
+    }
+});
+
+function pauseGame(){
+    isPaused = !isPaused;
+    if (isPaused) {
+        clearInterval(setIntervalId);
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    } else {
+        setIntervalId = setInterval(initGame, 100);
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    }
+}
+
+const playPauseBtn = document.querySelector('.play-pause');
+playPauseBtn.addEventListener('click', () => {
+    pauseGame();
+});
+
+// handling game start
 updateFoodPosition();
 setIntervalId = setInterval(initGame, 100);
 document.addEventListener("keyup", changeDirection);
