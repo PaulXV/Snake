@@ -145,6 +145,13 @@ playPauseBtn.addEventListener('click', () => {
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
         pauseGame();
+        return;
+    }
+    if(event.key === "t"){
+        console.log('t');
+        tutorial.classList.toggle('hidden');
+        pauseGame();
+        return;
     }
 });
 
