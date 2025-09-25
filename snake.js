@@ -12,7 +12,6 @@ tutorialControls.addEventListener('click', () => {
     pauseGame();
 });
 
-
 // handling game over
 const overlay = document.querySelector('.overlay');
 const restartGame = document.querySelector('.restart-game');
@@ -138,6 +137,11 @@ const initGame = () => {
 // handling pause game functionality
 let isPaused = false;
 
+const playPauseBtn = document.querySelector('.play-pause');
+playPauseBtn.addEventListener('click', () => {
+    pauseGame();
+});
+
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
         pauseGame();
@@ -155,10 +159,6 @@ function pauseGame(){
     }
 }
 
-const playPauseBtn = document.querySelector('.play-pause');
-playPauseBtn.addEventListener('click', () => {
-    pauseGame();
-});
 
 // handling game start
 updateFoodPosition();
