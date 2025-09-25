@@ -19,6 +19,24 @@ const restartGame = document.querySelector('.restart-game');
 const finalScore = document.querySelector('.final-score');
 const finalHighScore = document.querySelector('.final-high-score');
 
+// handling game part
+const playBoard = document.querySelector(".play-board");
+const scoreElement = document.querySelector(".score");
+const highScoreElement = document.querySelector(".high-score");
+const controls = document.querySelectorAll(".controls i");
+
+let gameOver = false;
+let foodX, foodY;
+let snakeX = 5, snakeY = 5;
+let velocityX = 0, velocityY = 0;
+let snakeBody = [];
+let setIntervalId;
+let score = 0;
+
+// Getting high score from the local storage
+let highScore = localStorage.getItem("high-score") || 0;
+highScoreElement.innerText = `High Score: ${highScore}`;
+
 restartGame.addEventListener('click', () => {
     overlay.classList.add('hidden');
     gameOver = false;
@@ -41,25 +59,6 @@ const handleGameOver = () => {
     finalHighScore.textContent = `${highScore}`;
     overlay.classList.remove('hidden');
 }
-
-
-// handling game part
-const playBoard = document.querySelector(".play-board");
-const scoreElement = document.querySelector(".score");
-const highScoreElement = document.querySelector(".high-score");
-const controls = document.querySelectorAll(".controls i");
-
-let gameOver = false;
-let foodX, foodY;
-let snakeX = 5, snakeY = 5;
-let velocityX = 0, velocityY = 0;
-let snakeBody = [];
-let setIntervalId;
-let score = 0;
-
-// Getting high score from the local storage
-let highScore = localStorage.getItem("high-score") || 0;
-highScoreElement.innerText = `High Score: ${highScore}`;
 
 const updateFoodPosition = () => {
     let foodPositionValid = false;
